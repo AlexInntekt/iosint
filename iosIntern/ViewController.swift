@@ -50,72 +50,15 @@ class FirstScreen: UIViewController, UITableViewDelegate, UITableViewDataSource
         self.listWithDevs.delegate = self
         
         
-        //DevelopersList = returnObjects()
-        
-        let currentURL = URL(string: "http://api.stackexchange.com/2.2/users?pagesize=10&order=desc&sort=reputation&site=stackoverflow")!
-        
-        
-        Alamofire.request(currentURL).responseJSON
-            { response in
-                let result = response.result
-                
-               // print(response)
-                
-                
-                if let dictionary = result.value as? Dictionary<String, AnyObject>
-                {
-                    
-                    
-                    if let list = dictionary["items"] as? [Dictionary<String, AnyObject>]
-                    {
-                    print("\n  Entering the tree \n")
-                    
-                        for object in list
-                        {
-                            print( object["display_name"]! )
-                            
-                            let addingDev =  Developer()
-                            addingDev.name = object["display_name"]! as! String
-                            
-                            DevelopersList.append(addingDev)
-                            
-                        }
 
-                    }
-               }
-//                    if let list = dictionary["item"] as? [Dictionary<String, AnyObject>]
-//                    {
-//                        print(list)
-//
-//                        for object in list
-//                        {
-//                            print( object["display_name"] as! String)
-//                        }
-//                    }
+    
+
                 
-//                if let dictionary = result.value as? Dictionary<String, AnyObject>
-//                {
-//                    print("\n  Entering the tree \n")
-//
-//                    if let list = dictionary["item"] as? [Dictionary<String, AnyObject>]
-//                    {
-//                        print(list)
-//
-//                        for object in list
-//                        {
-//                            print( object["display_name"] as! String)
-//                        }
-//                    }
-//              }
-                
-        }
-//
-                
-//        fetchDataFromStackOverFlowAPI(for: "https://api.stackexchange.com/2.2/users?pagesize=2&order=desc&sort=reputation&site=stackoverflow", completed:
-//            {
-//               print("\n\n  Finished fetching data from API \n")
-//
-//            })
+        fetchDataFromStackOverFlowAPI(for: "https://api.stackexchange.com/2.2/users?pagesize=2&order=desc&sort=reputation&site=stackoverflow", completed:
+            {
+               print("\n\n  Finished fetching data from API \n")
+               self.listWithDevs.reloadData()
+            })
         
         
         super.viewDidLoad()

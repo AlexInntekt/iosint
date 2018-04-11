@@ -62,67 +62,49 @@ func returnObjects() -> [Developer]
 
 
 
+
+
+    
 func fetchDataFromStackOverFlowAPI(for specificURL: String,completed: @escaping DownloadComplete)
 {
-    //Download with Alamofire
-    let currentURL = URL(string: specificURL)!
+    let currentURL = URL(string: "http://api.stackexchange.com/2.2/users?pagesize=10&order=desc&sort=reputation&site=stackoverflow")!
     
     
     Alamofire.request(currentURL).responseJSON
         { response in
             let result = response.result
             
-            print(response)
+            // print(response)
             
-           
-          
+            
+            if let dictionary = result.value as? Dictionary<String, AnyObject>
+            {
                 
-         
-            
-         
-
-            
-        
-//            if let dictionary = result.value as? Dictionary<String, AnyObject>
-//            {
-//                if let name = dictionary["name"] as? String
-//                {
-//
-//                    self._cityName = name.capitalized
-//
-//                }
-//
-//                if let weather = dictionary["weather"] as? [Dictionary<String, AnyObject>]
-//                {
-//
-//                    self._description = weather[0]["description"] as! String
-//                    self._weatherType = weather[0]["main"] as! String
-//
-//                    print("ewgwet4y34y: ", self._weatherType)
-//                }
-//
-//                if let main = dictionary["main"] as? Dictionary<String, AnyObject>
-//                {
-//                    if let currentTemperatureInKelvin = main["temp"] as? Double
-//                    {
-//                        var tempInCelsius = currentTemperatureInKelvin - 273.15
-//                        self._currentTemp = tempInCelsius
-//                    }
-//
-//                    if let kelv = main["temp"] as? Double
-//                    {
-//                        self._currentTemp = convertKelvinToCelsius(kelv)
-//                    }
-//
-//                }
-//
-            
+                
+                if let list = dictionary["items"] as? [Dictionary<String, AnyObject>]
+                {
+                    print("\n  Entering the tree \n")
+                    
+                    for object in list
+                    {
+                        print( object["display_name"]! )
+                        
+                        let addingDev =  Developer()
+                        addingDev.name = object["display_name"]! as! String
+                        
+                        DevelopersList.append(addingDev)
+                        
+                    }
+                    
+                }
             }
-            completed()
-    }
+            
+              completed()
+                
+            }
     
-    
-    
+            
+}
     
 
 
