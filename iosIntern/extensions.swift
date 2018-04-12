@@ -2,24 +2,41 @@
 //  extensions.swift
 //  iosIntern
 //
-//  Created by Manolescu Mihai Alexandru on 11/04/2018.
+//  Created by Manolescu Mihai Alexandru on 12/04/2018.
 //  Copyright © 2018 ValiTeam. All rights reserved.
 //
 
 import Foundation
 import UIKit
 
-//extension UIImageView {
-//    public func imageFromUrl(urlString: String) {
-//        if let url = NSURL(string: urlString) {
-//            let request = NSURLRequest(url: url as URL)
-//            NSURLConnection.sendAsynchronousRequest(request as URLRequest, queue: OperationQueue.main) {
-//                (response: URLResponse?, data: Data?, error: Error?) -> Void in
-//                if let imageData = data as NSData? {
-//                    self.image = UIImage(data: imageData as Data)
-//                }
-//            }
-//        }
-//    }
-//}
+//MARK EXTENSION for character access in string.
+//this extension is needed in swift 3, since only swift 4 allows character access by subscript in a string.
+//this will allow us to access specific characters in a string by an index, similarly to an array:
+extension String {
+    
+    var length: Int {
+        return self.count
+    }
+    
+    subscript (i: Int) -> String {
+        return self[i ..< i + 1]
+    }
+    
+    func substring(fromIndex: Int) -> String {
+        return self[min(fromIndex, length) ..< length]
+    }
+    
+    func substring(toIndex: Int) -> String {
+        return self[0 ..< max(0, toIndex)]
+    }
+    
+    subscript (r: Range<Int>) -> String {
+        let range = Range(uncheckedBounds: (lower: max(0, min(length, r.lowerBound)),
+                                            upper: min(length, max(0, r.upperBound))))
+        let start = index(startIndex, offsetBy: range.lowerBound)
+        let end = index(start, offsetBy: range.upperBound - range.lowerBound)
+        return String(self[start ..< end])
+    }
+    
+}
 

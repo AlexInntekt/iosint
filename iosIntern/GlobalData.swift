@@ -12,7 +12,10 @@ import Alamofire
 import AlamofireImage
 import SDWebImage
 
+
 var DevelopersList = [Developer]()
+var rawDataFromDisk = [DeveloperCD]()
+var diskData = [Developer]()
 
 typealias DownloadComplete = () -> ()
 
@@ -24,98 +27,62 @@ class Developer
     var goldenBadges = Int()
     var silverBadges = Int()
     var bronzeBadges = Int()
+    var timeOfTheRequest = Date()
 }
-
-
-
-
-func returnObjects() -> [Developer]
-{
-    var array = [Developer]()
-    
-    var developerOne = Developer()
-    developerOne.image = #imageLiteral(resourceName: "icon")
-    developerOne.name = "Steve"
-    
-    var developerTwo = Developer()
-    developerTwo.image = #imageLiteral(resourceName: "doi")
-    developerTwo.name = "MARK"
-    
-    var developerThree = Developer()
-    developerThree.image = #imageLiteral(resourceName: "trei")
-    developerThree.name = "John"
-    
-    array.append(developerOne)
-    array.append(developerTwo)
-    array.append(developerThree)
-    
-    //    var location = String()
-    //    var goldenBadges = Int()
-    //    var silverBadges = Int()
-    //    var bronzeBadges = Int()
-    
-    
-    return array
-}
-
-
-
-
-
-
-
-
 
     
 func fetchDataFromStackOverFlowAPI(for specificURL: String,completed: @escaping DownloadComplete)
 {
-    let currentURL = URL(string: "http://api.stackexchange.com/2.2/users?pagesize=10&order=desc&sort=reputation&site=stackoverflow")!
-    
-    
-    Alamofire.request(currentURL).responseJSON
-        { response in
-            let result = response.result
+
+    Alamofire.request(specificURL).responseJSON
+    {
+        response in
+        let result = response.result
+        
+        // print(response)
+        
+        if let dictionary = result.value as? Dictionary<String, AnyObject>
+        {
             
-            // print(response)
-            
-            
-            if let dictionary = result.value as? Dictionary<String, AnyObject>
+            if let list = dictionary["items"] as? [Dictionary<String, AnyObject>]
             {
+                print("\n  Entering the tree \n")
                 
-                
-                if let list = dictionary["items"] as? [Dictionary<String, AnyObject>]
+                for object in list
                 {
-                    print("\n  Entering the tree \n")
+                    print( object["display_name"]! )
                     
-                    for object in list
+                    let addingDev =  Developer()
+                    addingDev.name = object["display_name"]! as! String
+                    addingDev.location = object["location"]! as! String
+                    addingDev.goldenBadges = object["badge_counts"]!["gold"]! as! Int
+                    addingDev.silverBadges = object["badge_counts"]!["silver"]! as! Int
+                    addingDev.bronzeBadges = object["badge_counts"]!["bronze"]! as! Int
+                    
+                    addingDev.timeOfTheRequest = getCurrentDate()
+                    
+                    if let downloadURL = NSURL(string: (object["profile_image"]! as! String) )
                     {
-                        print( object["display_name"]! )
                         
-                        let addingDev =  Developer()
-                        addingDev.name = object["display_name"]! as! String
-                        
-
-                        if let downloadURL = NSURL(string: (object["profile_image"]! as! String) )
+                        //download image from URL:
+                        if let data = NSData(contentsOf: downloadURL as URL)
                         {
-                            
-                            //download image from URL:
-                            if let data = NSData(contentsOf: downloadURL as URL)
-                            {
-                                addingDev.image = UIImage(data: data as Data)!
-                            }
+                            addingDev.image = UIImage(data: data as Data)!
                         }
-                        
-                        DevelopersList.append(addingDev)
-
                     }
+                    
+                    DevelopersList.append(addingDev)
+                    //save data to Disk
+                    saveObject(named: addingDev)
+                    
+
                 }
             }
-            
-              completed()
+        }
+        completed()
                 
-            }
-    
-            
+    }
+
 }
     
 

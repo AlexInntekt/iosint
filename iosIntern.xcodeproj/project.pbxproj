@@ -8,17 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		327A27BAEC570CDE2AB41586 /* Pods_iosIntern.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C2C706991E45A2544912B99 /* Pods_iosIntern.framework */; };
-		B20203DE207DE0E800569D59 /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20203DD207DE0E800569D59 /* extensions.swift */; };
 		B2466D40207D2D81002E6006 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2466D3F207D2D81002E6006 /* AppDelegate.swift */; };
 		B2466D42207D2D81002E6006 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2466D41207D2D81002E6006 /* ViewController.swift */; };
 		B2466D45207D2D81002E6006 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2466D43207D2D81002E6006 /* Main.storyboard */; };
-		B2466D48207D2D81002E6006 /* iosIntern.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B2466D46207D2D81002E6006 /* iosIntern.xcdatamodeld */; };
+		B2466D48207D2D81002E6006 /* DeveloperCD.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B2466D46207D2D81002E6006 /* DeveloperCD.xcdatamodeld */; };
 		B2466D4A207D2D81002E6006 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2466D49207D2D81002E6006 /* Assets.xcassets */; };
 		B2466D4D207D2D81002E6006 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2466D4B207D2D81002E6006 /* LaunchScreen.storyboard */; };
 		B2466D58207D2D81002E6006 /* iosInternTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2466D57207D2D81002E6006 /* iosInternTests.swift */; };
 		B2466D63207D2D81002E6006 /* iosInternUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2466D62207D2D81002E6006 /* iosInternUITests.swift */; };
 		B2466D71207D32FD002E6006 /* GlobalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2466D70207D32FD002E6006 /* GlobalData.swift */; };
 		B2466D73207D3649002E6006 /* SecondScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2466D72207D3649002E6006 /* SecondScreen.swift */; };
+		B2ACF7F8207F71EB005ADEA2 /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2ACF7F7207F71EB005ADEA2 /* CoreDataController.swift */; };
+		B2D86797207FF05600D0DA85 /* DateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D86796207FF05600D0DA85 /* DateController.swift */; };
+		B2D86799207FF24600D0DA85 /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D86798207FF24600D0DA85 /* extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,7 +44,6 @@
 		0C2C706991E45A2544912B99 /* Pods_iosIntern.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iosIntern.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3764A3A3BE8F12AE666991BF /* Pods-iosIntern.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosIntern.release.xcconfig"; path = "Pods/Target Support Files/Pods-iosIntern/Pods-iosIntern.release.xcconfig"; sourceTree = "<group>"; };
 		4DF3F25809680123830975D6 /* Pods-iosIntern.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosIntern.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iosIntern/Pods-iosIntern.debug.xcconfig"; sourceTree = "<group>"; };
-		B20203DD207DE0E800569D59 /* extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensions.swift; sourceTree = "<group>"; };
 		B2466D3C207D2D81002E6006 /* iosIntern.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iosIntern.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2466D3F207D2D81002E6006 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B2466D41207D2D81002E6006 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -59,6 +60,9 @@
 		B2466D64207D2D81002E6006 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B2466D70207D32FD002E6006 /* GlobalData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalData.swift; sourceTree = "<group>"; };
 		B2466D72207D3649002E6006 /* SecondScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondScreen.swift; sourceTree = "<group>"; };
+		B2ACF7F7207F71EB005ADEA2 /* CoreDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataController.swift; sourceTree = "<group>"; };
+		B2D86796207FF05600D0DA85 /* DateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateController.swift; sourceTree = "<group>"; };
+		B2D86798207FF24600D0DA85 /* extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,12 +137,14 @@
 				B2466D41207D2D81002E6006 /* ViewController.swift */,
 				B2466D72207D3649002E6006 /* SecondScreen.swift */,
 				B2466D43207D2D81002E6006 /* Main.storyboard */,
+				B2ACF7F7207F71EB005ADEA2 /* CoreDataController.swift */,
 				B2466D70207D32FD002E6006 /* GlobalData.swift */,
-				B20203DD207DE0E800569D59 /* extensions.swift */,
+				B2D86796207FF05600D0DA85 /* DateController.swift */,
+				B2D86798207FF24600D0DA85 /* extensions.swift */,
 				B2466D49207D2D81002E6006 /* Assets.xcassets */,
 				B2466D4B207D2D81002E6006 /* LaunchScreen.storyboard */,
 				B2466D4E207D2D81002E6006 /* Info.plist */,
-				B2466D46207D2D81002E6006 /* iosIntern.xcdatamodeld */,
+				B2466D46207D2D81002E6006 /* DeveloperCD.xcdatamodeld */,
 			);
 			path = iosIntern;
 			sourceTree = "<group>";
@@ -358,10 +364,12 @@
 			files = (
 				B2466D42207D2D81002E6006 /* ViewController.swift in Sources */,
 				B2466D40207D2D81002E6006 /* AppDelegate.swift in Sources */,
+				B2ACF7F8207F71EB005ADEA2 /* CoreDataController.swift in Sources */,
+				B2D86799207FF24600D0DA85 /* extensions.swift in Sources */,
+				B2D86797207FF05600D0DA85 /* DateController.swift in Sources */,
 				B2466D71207D32FD002E6006 /* GlobalData.swift in Sources */,
-				B2466D48207D2D81002E6006 /* iosIntern.xcdatamodeld in Sources */,
+				B2466D48207D2D81002E6006 /* DeveloperCD.xcdatamodeld in Sources */,
 				B2466D73207D3649002E6006 /* SecondScreen.swift in Sources */,
-				B20203DE207DE0E800569D59 /* extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -659,13 +667,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		B2466D46207D2D81002E6006 /* iosIntern.xcdatamodeld */ = {
+		B2466D46207D2D81002E6006 /* DeveloperCD.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
 				B2466D47207D2D81002E6006 /* iosIntern.xcdatamodel */,
 			);
 			currentVersion = B2466D47207D2D81002E6006 /* iosIntern.xcdatamodel */;
-			path = iosIntern.xcdatamodeld;
+			path = DeveloperCD.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

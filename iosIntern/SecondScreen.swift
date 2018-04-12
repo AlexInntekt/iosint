@@ -12,12 +12,20 @@ import Foundation
 class SecondScreen: UIViewController
 {
 
-    
     @IBOutlet var profileImage: UIImageView!
+    
     @IBOutlet var name: UILabel!
     
-    var currentDeveloper = Developer()
+    @IBOutlet var location: UILabel!
     
+    @IBOutlet var goldBadges: UILabel!
+    
+    @IBOutlet var silverBadges: UILabel!
+    
+    @IBOutlet var bronzeBadges: UILabel!
+    
+    
+    var currentDeveloper = Developer()
     
     override func viewDidLoad()
     {
@@ -25,7 +33,10 @@ class SecondScreen: UIViewController
 
         profileImage.image = currentDeveloper.image
         name.text = currentDeveloper.name
-        
+        location.text = "Location: " + currentDeveloper.location
+        goldBadges.text = "Gold Badges: " + String(currentDeveloper.goldenBadges)
+        silverBadges.text = "Silver Badges: " + String(currentDeveloper.silverBadges)
+        bronzeBadges.text = "Bronze Badges: " + String(currentDeveloper.bronzeBadges)
         
         // Do any additional setup after loading the view.
     }
@@ -36,6 +47,4 @@ class SecondScreen: UIViewController
         // Dispose of any resources that can be recreated.
     }
     
-
- 
 }
