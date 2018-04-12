@@ -9,6 +9,8 @@
 import Foundation
 import UIKit
 import Alamofire
+import AlamofireImage
+import SDWebImage
 
 var DevelopersList = [Developer]()
 
@@ -92,10 +94,20 @@ func fetchDataFromStackOverFlowAPI(for specificURL: String,completed: @escaping 
                         let addingDev =  Developer()
                         addingDev.name = object["display_name"]! as! String
                         
-                        DevelopersList.append(addingDev)
+
+                        if let downloadURL = NSURL(string: (object["profile_image"]! as! String) )
+                        {
+                            
+                            //download image from URL:
+                            if let data = NSData(contentsOf: downloadURL as URL)
+                            {
+                                addingDev.image = UIImage(data: data as Data)!
+                            }
+                        }
                         
+                        DevelopersList.append(addingDev)
+
                     }
-                    
                 }
             }
             
